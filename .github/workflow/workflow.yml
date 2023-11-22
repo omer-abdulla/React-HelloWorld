@@ -1,0 +1,20 @@
+name: React CI
+
+on: 
+   push:
+    branches:
+      - "masters"
+
+jobs:
+  build:
+    runs on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [15.x]
+
+    steps:
+      - user: action/checkout@v1
+      - run: npm install
+      - run: npm ru build 
+      - run:npm test      
